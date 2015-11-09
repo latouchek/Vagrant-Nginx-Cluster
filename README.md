@@ -21,9 +21,9 @@ loadbalancer listen on port 80 forwarded to port 8080 on the host.
 - eg:
 
 <pre>
-  /testlb.sh localhost 6789
-   Node1 3333
-   Node2 3333
-   Node3 3333
+  /testlb.sh localhost 10
+   Node1 3
+   Node2 3
+   Node3 4
 
   </pre>
