@@ -1,0 +1,48 @@
+- name: tasks to be performed on webservers
+  hosts: [all]
+  sudo: yes
+  tasks:
+   - name: Install packages
+     apt: name={{ item }}  state=latest
+     sudo: yes
+     with_items:
+      - nginx
+      - htop
+- name: tasks to be performed on webservers
+  hosts: [web]
+  sudo: yes
+  tasks:
+   - name: Install packages
+     apt: name={{ item }}  state=latest
+     sudo: yes
+     with_items:
+      - iptraf
+   - name: configure nginx loadbalancer
+     copy: src=files/webnginxdefault dest=/etc/nginx/sites-available/default
+   - name: configure nginx loadbalancer
+     template: src=templates/index.j2 dest=/var/www/html/index.html   mode=0755
+   - name: enable configuration
+     file: >
+      dest=/etc/nginx/sites-enabled/default
+      src=/etc/nginx/sites-available/default
+      state=link
+   - name: restart nginx
+     service: name=nginx state=restarted
+
+- name: tasks to be performed on loadbalancer
+  hosts: [lbnginx]
+  sudo: yes
+  tasks:
+   - name: Install packages
+     apt: name={{ item }}  state=latest
+     with_items:
+      - haproxy
+   - name: configure nginx loadbalancer
+     template: src=templates/nginxdefault.j2 dest=/etc/nginx/sites-available/default
+   - name: enable configuration
+     file: >
+      dest=/etc/nginx/sites-enabled/default
+      src=/etc/nginx/sites-available/default
+      state=link
+   - name: restart nginx
+     service: name=nginx state=restarted
