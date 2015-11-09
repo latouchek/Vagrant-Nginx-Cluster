@@ -3,7 +3,7 @@ A vagrant file and a playbook that allow you to deploy a 3 nodes nginx cluster b
 
 # Requirements
 
-- VirtaulBox 4++
+- VirtualBox 4++
 - Vagrant 1.7+
 - Ansible 1.9
 
@@ -22,8 +22,8 @@ loadbalancer listen on port 80 forwarded to port 8080 on the host.
 
 <pre>
   /testlb.sh localhost 6789
-Node1 3333
-Node2 3333
-Node3 3333
+   Node1 3333
+   Node2 3333
+   Node3 3333
 
   </pre>
