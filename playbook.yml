@@ -1,4 +1,4 @@
-- name: tasks to be performed on webservers
+- name: tasks to be performed on all server
   hosts: [all]
   sudo: yes
   tasks:
@@ -11,9 +11,9 @@
   hosts: [web]
   sudo: yes
   tasks:
-   - name: configure nginx loadbalancer
+   - name: configure nginx as a webserver
      copy: src=files/webnginxdefault dest=/etc/nginx/sites-available/default
-   - name: configure nginx loadbalancer
+   - name: use template for index.html
      template: src=templates/index.j2 dest=/var/www/html/index.html   mode=0755
    - name: enable configuration
      file: >
