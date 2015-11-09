@@ -6,8 +6,8 @@
 # backwards compatibility). Please don't change it unless you know what
 # you're doing.
 Vagrant.configure("2") do |config|
-###edit if you want more nodes###
-  NODE_COUNT = 3
+
+  NODE_COUNT = 3 ###edit if you want more nodes###
   ipAddrPrefix = "10.1.1.10"
   config.ssh.insert_key = false
   config.vm.box = "ubuntu/vivid64"
