@@ -1,5 +1,5 @@
 # Vagrant-Nginx-Cluster
-A vagrant file and a playbook that allow you to deploy a 3 nodes nginx cluster behing an Nginx Round Robin loadbalancer . (cluster nodes are registered automaticaly in the loadbalancer)
+A vagrant file and a playbook that allow you to deploy a 3 nodes nginx cluster behind an Nginx Round Robin loadbalancer . (cluster nodes are registered automaticaly in the loadbalancer)
 
 # Requirements
 
@@ -15,10 +15,15 @@ A vagrant file and a playbook that allow you to deploy a 3 nodes nginx cluster b
 
 # Testing the cluster
 
-loadbalancer listen on port 80 forwarded on port 8080 to the host. 
+loadbalancer listen on port 80 forwarded to port 8080 on the host.
 
-- testlb.sh can be used to test servers are properly loadbalanced
+- testlb.sh can be used to test servers are properly loadbalanced (Usage: ./testlb.sh hostname number of requests)
+- eg:
 
 <pre>
-  /testlb.sh localhost 678
+  /testlb.sh localhost 6789
+Node1 3333
+Node2 3333
+Node3 3333
+
   </pre>

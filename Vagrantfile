@@ -6,7 +6,7 @@
 # backwards compatibility). Please don't change it unless you know what
 # you're doing.
 Vagrant.configure("2") do |config|
-
+###edit if you want more nodes###
   NODE_COUNT = 3
   ipAddrPrefix = "10.1.1.10"
   config.ssh.insert_key = false
@@ -31,7 +31,7 @@ Vagrant.configure("2") do |config|
                 ansible.limit = 'all'
                 ansible.groups = {
                   "lbnginx" => ["lb"],
-                  "web" => ["node1","node2","node3"],
+                  "web" => ["node1","node2","node3"],  #####edit if you want more nodes
                   "all_groups:children" => ["web","lbnginx"]
                 }
       ansible.playbook = "playbook.yml"

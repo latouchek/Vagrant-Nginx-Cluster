@@ -7,16 +7,10 @@
      sudo: yes
      with_items:
       - nginx
-      - htop
 - name: tasks to be performed on webservers
   hosts: [web]
   sudo: yes
   tasks:
-   - name: Install packages
-     apt: name={{ item }}  state=latest
-     sudo: yes
-     with_items:
-      - iptraf
    - name: configure nginx loadbalancer
      copy: src=files/webnginxdefault dest=/etc/nginx/sites-available/default
    - name: configure nginx loadbalancer
@@ -33,10 +27,6 @@
   hosts: [lbnginx]
   sudo: yes
   tasks:
-   - name: Install packages
-     apt: name={{ item }}  state=latest
-     with_items:
-      - haproxy
    - name: configure nginx loadbalancer
      template: src=templates/nginxdefault.j2 dest=/etc/nginx/sites-available/default
    - name: enable configuration
